@@ -2,6 +2,7 @@ using System;
 using TechTalk.SpecFlow;
 using eCommerce.POMs;
 using OpenQA.Selenium;
+using static eCommerce.StepDefinitions.Hooks;
 
 namespace eCommerce.StepDefinitions
 {
@@ -15,8 +16,8 @@ namespace eCommerce.StepDefinitions
         public LoginToCommerce(ScenarioContext scenarioContext)
         {
             _scenarioContext = scenarioContext;
-           this._driver = (IWebDriver)scenarioContext["mydriver"];
-            
+            this._driver = (IWebDriver)scenarioContext["mydriver"];
+
         }
 
 
@@ -26,15 +27,23 @@ namespace eCommerce.StepDefinitions
             _driver.Url = "https://www.edgewordstraining.co.uk/demo-site/";
             HomePagePOM home = new HomePagePOM(_driver);
             home.goLoginPage();
-            
+
         }
 
-        [When(@"I can proceed to login page")]
+        [Then(@"I can proceed to login page and login using valid details")]
         public void WhenIClickOn()
         {
             LoginPagePOM login = new LoginPagePOM(_driver);
-            login.setUsername(Environment.GetEnvironmentVariable("username"));
-            login.setPassword(Environment.GetEnvironmentVariable("password"));
+            try
+            {
+                login.setUsername(Environment.GetEnvironmentVariable("username"));
+                login.setPassword(Environment.GetEnvironmentVariable("password"));
+            }
+
+            catch (NullReferenceException e)
+            {
+                Console.WriteLine("Username nad password have not been provided");
+            }
             login.goSubmit();
             Thread.Sleep(2000);
         }

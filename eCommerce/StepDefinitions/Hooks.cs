@@ -33,7 +33,9 @@ namespace eCommerce.StepDefinitions
         [After]
         public void TearDown()
         {
+            Thread.Sleep(3000);
             driver.Quit();
+            
         }
     }
 }
