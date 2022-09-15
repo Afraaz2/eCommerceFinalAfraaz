@@ -109,7 +109,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Then("I can proceed to login page and login using valid details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 9
- testRunner.Then("I have arrived on the My account page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("I have arrived on the My account page I can access the shop page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -143,7 +143,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 13
- testRunner.Given("I am on the website my account page and I click the top shop navigation link", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("I am on the shop page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 14
  testRunner.Then("I can add an item to my cart and view the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

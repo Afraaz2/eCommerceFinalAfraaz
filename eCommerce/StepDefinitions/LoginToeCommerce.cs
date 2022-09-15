@@ -48,10 +48,11 @@ namespace eCommerce.StepDefinitions
             Thread.Sleep(2000);
         }
 
-        [Then(@"I can login using valid details")]
+        [When(@"I have arrived on the My account page I can access the shop page")]
         public void ThenICanLoginUsingValidDetails()
         {
-            throw new PendingStepException();
+            MyAccountPagePOM accountPom = new MyAccountPagePOM(_driver);
+            accountPom.goShop();
         }
     }
 }
