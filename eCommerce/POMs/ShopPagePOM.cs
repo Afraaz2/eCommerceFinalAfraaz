@@ -15,11 +15,17 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        IWebElement shopLink => driver.FindElement(By.CssSelector("a[rel='home']"));
+        IWebElement itemLink => driver.FindElement(By.CssSelector(".storefront-product-section:nth-child(3) .product:nth-child(2) > .button"));
 
-        public void goShop()
+        IWebElement cartLink => driver.FindElement(By.LinkText("View cart"));
+        public void AddToCart()
         {
-            shopLink.Click();
+            itemLink.Click();
+        }
+
+        public void ViewCart()
+        {
+            cartLink.Click();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace eCommerce.StepDefinitions
 
         }
 
-
+        [Given(@"I am on the website homepage")]
         [Given(@"I am on the website homepage and click the My Account button")]
         public void GivenIAmOnTheWebsiteHomepage()
         {
@@ -29,7 +29,7 @@ namespace eCommerce.StepDefinitions
             home.goLoginPage();
 
         }
-
+        [Then(@"I login as a valid user account")]
         [Then(@"I can proceed to login page and login using valid details")]
         public void WhenIClickOn()
         {
