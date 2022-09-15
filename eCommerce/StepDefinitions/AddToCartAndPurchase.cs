@@ -33,7 +33,7 @@ namespace eCommerce.StepDefinitions
 
         }
 
-        [Then(@"Item is in cart and I can apply a coupon")]
+        [When(@"I add an item to the cart and apply an coupon")]
         public void ThenItemIsInCartAndICanApplyACoupon()
         {
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
@@ -44,8 +44,8 @@ namespace eCommerce.StepDefinitions
             
         }
 
-        [Then(@"The coupon gives a discount equivalent to (.*)% of the retail value")]
-        public void ThenTheCouponGivesADiscountEquivalentToOfTheRetailValue(int p0)
+        [Then(@"The coupon gives a discount on the retail value")]
+        public void ThenTheCouponGivesADiscountEquivalentToOfTheRetailValue()
         {
             throw new PendingStepException();
         }

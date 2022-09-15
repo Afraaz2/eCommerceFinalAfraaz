@@ -47,7 +47,7 @@ namespace eCommerce.StepDefinitions
             login.goSubmit();
             Thread.Sleep(2000);
         }
-
+        [Given(@"I am currently on the shop page")]
         [When(@"I have arrived on the My account page I can access the shop page")]
         public void ThenICanLoginUsingValidDetails()
         {
