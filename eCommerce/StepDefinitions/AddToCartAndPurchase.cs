@@ -2,7 +2,9 @@ using System;
 using TechTalk.SpecFlow;
 using eCommerce.POMs;
 using OpenQA.Selenium;
-using static eCommerce.StepDefinitions.Hooks;
+
+using OpenQA.Selenium.Support.UI;
+
 namespace eCommerce.StepDefinitions
 {
     [Binding]
@@ -15,6 +17,8 @@ namespace eCommerce.StepDefinitions
         {
             _scenarioContext = scenarioContext;
             this._driver = (IWebDriver)scenarioContext["mydriver"];
+            WebDriverWait myWait = new WebDriverWait(this._driver, TimeSpan.FromSeconds(2));
+
         }
 
         [Given(@"I am on the shop page")]
@@ -28,6 +32,7 @@ namespace eCommerce.StepDefinitions
         {
             ShopPagePOM shopPOM = new ShopPagePOM(_driver);
             shopPOM.AddToCart();
+            Thread.Sleep(5000);
             shopPOM.ViewCart();
 
 

@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,12 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        IWebElement itemLink => driver.FindElement(By.CssSelector(".storefront-product-section:nth-child(3) .product:nth-child(2) > .button"));
-
+        IWebElement itemLink => driver.FindElement(By.CssSelector(".post-32:nth-child(3) > .button"));
         IWebElement cartLink => driver.FindElement(By.LinkText("View cart"));
         public void AddToCart()
         {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait.Until();
             itemLink.Click();
         }
 

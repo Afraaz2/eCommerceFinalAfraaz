@@ -3,6 +3,7 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
+using OpenQA.Selenium.Support.UI;
 
 [assembly: Parallelizable(ParallelScope.Fixtures)] //Can only parallelise Features
 [assembly: LevelOfParallelism(20)] //Worker thread i.e. max amount of Features to run in Parallel
@@ -33,7 +34,7 @@ namespace eCommerce.StepDefinitions
         [After]
         public void TearDown()
         {
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
             driver.Quit();
             
         }
