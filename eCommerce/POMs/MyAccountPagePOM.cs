@@ -17,10 +17,15 @@ namespace eCommerce.POMs
         }
 
         IWebElement shopLink => driver.FindElement(By.CssSelector("a[rel='home']"));
-
-        public void goShop()
+        IWebElement logoutLink => driver.FindElement(By.LinkText("Logout"));
+        public void GoShop()
         {
             shopLink.Click();
+        }
+
+        public void Logout()
+        {
+            logoutLink.Click();
         }
     }
 }

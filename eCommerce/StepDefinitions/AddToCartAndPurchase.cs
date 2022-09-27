@@ -2,7 +2,6 @@ using System;
 using TechTalk.SpecFlow;
 using eCommerce.POMs;
 using OpenQA.Selenium;
-
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 
@@ -60,10 +59,6 @@ namespace eCommerce.StepDefinitions
             Assert.That(percentage == 15, "Coupon does not apply 15% discount");
         }
 
-        [Then(@"The coupon gives a discount on the retail value")]
-        public void LogOut()
-        {
 
-        }
     }
 }

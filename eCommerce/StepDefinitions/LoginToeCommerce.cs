@@ -41,17 +41,16 @@ namespace eCommerce.StepDefinitions
 
             catch (NullReferenceException e)
             {
-                Console.WriteLine("Username nad password have not been provided");
+                Console.WriteLine("Username and password have not been provided");
             }
             login.goSubmit();
-            Thread.Sleep(2000);
         }
         [Given(@"I am currently on the shop page")]
         [When(@"I have arrived on the My account page I can access the shop page")]
         public void ThenICanLoginUsingValidDetails()
         {
             MyAccountPagePOM accountPom = new MyAccountPagePOM(_driver);
-            accountPom.goShop();
+            accountPom.GoShop();
         }
     }
 }

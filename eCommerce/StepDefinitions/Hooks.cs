@@ -4,6 +4,7 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using NUnit.Framework;
 using OpenQA.Selenium.Support.UI;
+using eCommerce.POMs;
 
 [assembly: Parallelizable(ParallelScope.Fixtures)] //Can only parallelise Features
 [assembly: LevelOfParallelism(20)] //Worker thread i.e. max amount of Features to run in Parallel
@@ -35,8 +36,14 @@ namespace eCommerce.StepDefinitions
         public void TearDown()
         {
             Thread.Sleep(5000);
+            HomePagePOM homePage = new HomePagePOM(driver);
+            CartPagePOM cartPagePOM = new CartPagePOM(driver);
+            MyAccountPagePOM myAccountPagePOM = new MyAccountPagePOM(driver);
+            homePage.goCartPage();
+            cartPagePOM.RemoveCartItems();
+            homePage.goLoginPage();
+            myAccountPagePOM.Logout();
             driver.Quit();
-            
         }
     }
 }

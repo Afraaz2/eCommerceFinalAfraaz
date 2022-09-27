@@ -129,9 +129,6 @@ this.FeatureBackground();
 #line 13
  testRunner.Then("The coupon gives a discount on the retail value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 14
- testRunner.Then("I can log out", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
             }
             this.ScenarioCleanup();
         }

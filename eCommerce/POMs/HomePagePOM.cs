@@ -15,11 +15,16 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        IWebElement LoginLink => driver.FindElement(By.LinkText("My account"));
-
+        IWebElement loginLink => driver.FindElement(By.LinkText("My account"));
+        IWebElement cartLink => driver.FindElement(By.LinkText("Cart"));
         public void goLoginPage()
         {
-            LoginLink.Click();
+            loginLink.Click();
+        }
+
+        public void goCartPage()
+        {
+            cartLink.Click();
         }
     }
 }
