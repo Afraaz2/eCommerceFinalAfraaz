@@ -14,7 +14,7 @@ namespace eCommerce.POMs
         {
             this.driver = driver;
         }
-           
+        //Variables instantiate once called 
         IWebElement couponCode => driver.FindElement(By.Id("coupon_code"));
         IWebElement applyCoupon => driver.FindElement(By.Name("apply_coupon"));
         IWebElement currentPrice => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount > bdi"));
@@ -27,14 +27,14 @@ namespace eCommerce.POMs
    
         public void AddCoupon(string coupon)
         {
+            //Adds and applies coupon 
             couponCode.SendKeys(coupon);
-        }
-
-        public void ApplyCoupon()
-        {
             applyCoupon.Click();
+
         }
 
+
+        //Returns values for current price,total price and coupon discount
         public double GetCurrentPrice()
         {
             return  Convert.ToDouble(currentPrice.Text.Substring(1));
@@ -50,8 +50,10 @@ namespace eCommerce.POMs
             return Convert.ToDouble(couponDiscount.Text.Substring(1));
         }
 
+
         public void RemoveCartItems()
         {
+            //While items are in cart loops, removing the top item until no element is found using try cattch
             bool inCart = true;
             while (inCart)
             {
@@ -63,7 +65,7 @@ namespace eCommerce.POMs
                     Thread.Sleep(1500);
                     inCart = true;
                 }
-                catch (NoSuchElementException e)
+                catch (NoSuchElementException)
                 {
                     inCart = false;
                 }
@@ -72,6 +74,7 @@ namespace eCommerce.POMs
 
         public void GoCheckout()
         {
+            //Check out page
             checkoutLink.Click();
         }
     }

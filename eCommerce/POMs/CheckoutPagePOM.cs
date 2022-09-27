@@ -14,6 +14,7 @@ namespace eCommerce.POMs
         {
             this.driver = driver;
         }
+        //Variables instantiate once called 
         IWebElement firstNameField => driver.FindElement(By.Id("billing_first_name"));
         IWebElement lastNameField => driver.FindElement(By.Id("billing_last_name"));
         IWebElement addressField => driver.FindElement(By.Id("billing_address_1"));
@@ -26,6 +27,7 @@ namespace eCommerce.POMs
 
         public void fillBillingDetails()
         {
+            //Clears every field and then sends data in for check outs
             firstNameField.Clear();
             lastNameField.Clear();
             addressField.Clear();
@@ -46,6 +48,7 @@ namespace eCommerce.POMs
        
         public void placeOrder()
         {
+            //Presses the place order button
             placeOrderButton.Click();
         }
 

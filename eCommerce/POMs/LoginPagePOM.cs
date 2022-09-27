@@ -15,24 +15,28 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
+        //Variables instantiate once called 
         IWebElement usernameField => driver.FindElement(By.Id("username"));
         IWebElement passwordField => driver.FindElement(By.Id("password"));
         IWebElement loginButton => driver.FindElement(By.CssSelector("button[name='login']"));
 
         public LoginPagePOM setUsername(string username)
         {
+            //Sets username
             usernameField.SendKeys(username);
             return this;
         }
 
         public LoginPagePOM setPassword(string password)
         {
+            //Sets password
             passwordField.SendKeys(password);
             return this;
         }
 
         public void goSubmit()
         {
+            //Submits login
             loginButton.Click();
         }
 

@@ -37,7 +37,6 @@ namespace eCommerce.StepDefinitions
             //Applys coupon edgewords
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             cartPagePOM.AddCoupon(coupon);
-            cartPagePOM.ApplyCoupon();
             Thread.Sleep(1000);
                         
         }

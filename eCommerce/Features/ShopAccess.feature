@@ -13,8 +13,6 @@ Scenario: Add item to shopping cart and check if Coupon works, then log out
 	Then The coupon gives a discount on the retail value
 
 
-
-
 @TestCase2
 Scenario: Purchase an item of clothing and go through. Check my order detail
 	Given I am currently on the shop page

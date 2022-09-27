@@ -16,7 +16,7 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        //Variables instanialise once called 
+        //Variables instantiate once called 
         IWebElement noticeLink => driver.FindElement(By.CssSelector(".demo_store.woocommerce-store-notice > .woocommerce-store-notice__dismiss-link"));
         IWebElement itemLink => driver.FindElement(By.CssSelector(".storefront-product-section.storefront-recent-products .has-post-thumbnail.instock.post-37.product.product-type-simple.product_cat-tshirts.purchasable.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
         IWebElement cartLink => driver.FindElement(By.LinkText("View cart"));
@@ -31,7 +31,7 @@ namespace eCommerce.POMs
 
         public void ViewCart()
         {
-            //Vieqw
+            //View cart
             Thread.Sleep(1000);
             cartLink.Click();
         }
