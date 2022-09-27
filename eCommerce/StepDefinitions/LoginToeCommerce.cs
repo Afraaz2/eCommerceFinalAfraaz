@@ -3,7 +3,6 @@ using TechTalk.SpecFlow;
 using eCommerce.POMs;
 using OpenQA.Selenium;
 using static eCommerce.StepDefinitions.Hooks;
-
 namespace eCommerce.StepDefinitions
 {
     [Binding]

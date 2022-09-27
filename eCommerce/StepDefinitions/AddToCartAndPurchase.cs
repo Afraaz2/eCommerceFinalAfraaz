@@ -4,6 +4,7 @@ using eCommerce.POMs;
 using OpenQA.Selenium;
 
 using OpenQA.Selenium.Support.UI;
+using NUnit.Framework;
 
 namespace eCommerce.StepDefinitions
 {
@@ -32,7 +33,6 @@ namespace eCommerce.StepDefinitions
         {
             ShopPagePOM shopPOM = new ShopPagePOM(_driver);
             shopPOM.AddToCart();
-            Thread.Sleep(5000);
             shopPOM.ViewCart();
 
 
@@ -44,15 +44,26 @@ namespace eCommerce.StepDefinitions
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             cartPagePOM.AddCoupon("edgewords");
             cartPagePOM.ApplyCoupon();
-            Console.Write(cartPagePOM.GetCurrentPrice());
-            
-            
+                        
         }
 
         [Then(@"The coupon gives a discount on the retail value")]
         public void ThenTheCouponGivesADiscountEquivalentToOfTheRetailValue()
         {
-            throw new PendingStepException();
+           CartPagePOM cartPagePOM = new CartPagePOM(_driver);
+            double subTotal = cartPagePOM.GetCurrentPrice();
+            double coupon = cartPagePOM.GetCouponDiscount();
+            double afterCoupon = subTotal - coupon;
+            double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
+            Math.Round(percentage, MidpointRounding.AwayFromZero);
+            Console.WriteLine("the coupon value is " + coupon + " the percentage return is " + percentage);
+            Assert.That(percentage == 15, "Coupon does not apply 15% discount");
+        }
+
+        [Then(@"The coupon gives a discount on the retail value")]
+        public void LogOut()
+        {
+
         }
     }
 }

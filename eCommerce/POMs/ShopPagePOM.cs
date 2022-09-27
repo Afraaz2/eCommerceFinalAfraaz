@@ -16,17 +16,19 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        IWebElement itemLink => driver.FindElement(By.CssSelector(".post-32:nth-child(3) > .button"));
+        IWebElement noticeLink => driver.FindElement(By.CssSelector(".demo_store.woocommerce-store-notice > .woocommerce-store-notice__dismiss-link"));
+        IWebElement itemLink => driver.FindElement(By.CssSelector(".storefront-product-section.storefront-recent-products .has-post-thumbnail.instock.post-37.product.product-type-simple.product_cat-tshirts.purchasable.shipping-taxable.status-publish.type-product > .add_to_cart_button.ajax_add_to_cart.button.product_type_simple"));
         IWebElement cartLink => driver.FindElement(By.LinkText("View cart"));
         public void AddToCart()
         {
-            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
-            wait.Until();
+            noticeLink.Click();
             itemLink.Click();
         }
 
         public void ViewCart()
         {
+            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
+            wait.Until(drv => cartLink.Displayed);
             cartLink.Click();
         }
     }

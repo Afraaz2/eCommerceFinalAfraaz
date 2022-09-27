@@ -21,6 +21,8 @@ namespace eCommerce.POMs
         IWebElement currentPrice => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount > bdi"));
 
         IWebElement totalPrice => driver.FindElement(By.CssSelector("strong > .amount.woocommerce-Price-amount > bdi"));
+
+        IWebElement couponDiscount => driver.FindElement(By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount"));
         public void AddCoupon(string coupon)
         {
             couponCode.SendKeys(coupon);
@@ -31,14 +33,19 @@ namespace eCommerce.POMs
             applyCoupon.Click();
         }
 
-        public string GetCurrentPrice()
+        public double GetCurrentPrice()
         {
-            return currentPrice.Text;
+            return  Convert.ToDouble(currentPrice.Text.Substring(1));
         }
 
-        public string GetTotalPrice()
+        public double GetTotalPrice()
         {
-            return totalPrice.Text;
+            return Convert.ToDouble(totalPrice.Text.Substring(1));
+        }
+
+        public double GetCouponDiscount()
+        {
+            return Convert.ToDouble(couponDiscount.Text.Substring(1));
         }
     }
 }
