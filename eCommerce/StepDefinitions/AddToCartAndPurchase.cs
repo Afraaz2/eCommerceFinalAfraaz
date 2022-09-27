@@ -55,8 +55,7 @@ namespace eCommerce.StepDefinitions
             double afterCoupon = subTotal - coupon;
             double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
             int intPercentage = Convert.ToInt32(percentage);
-            Console.WriteLine("the coupon value is " + coupon + " the percentage return is " + intPercentage);
-            Assert.That(intPercentage == 15, "Coupon does not apply 15% discount");
+            Assert.That(intPercentage == 10, "Coupon does not apply 15% discount");
         }
 
 
