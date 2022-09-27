@@ -41,8 +41,8 @@ namespace eCommerce.StepDefinitions
                         
         }
 
-        [Then(@"The coupon gives a discount on the retail value")]
-        public void CouponDiscountVerification()
+        [Then(@"The coupon gives a discount of (.*)% on the retail value")]
+        public void CouponDiscountVerification(int targetPercentage)
         {
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             double subTotal = cartPagePOM.GetCurrentPrice();
@@ -50,7 +50,7 @@ namespace eCommerce.StepDefinitions
             double afterCoupon = subTotal - coupon;
             double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
             int intPercentage = Convert.ToInt32(percentage);
-            Assert.That(intPercentage == 10, "Coupon does not apply 15% discount");
+            Assert.That(intPercentage == targetPercentage, ($"Coupon does not apply {targetPercentage}% discount"));
         }
 
 
