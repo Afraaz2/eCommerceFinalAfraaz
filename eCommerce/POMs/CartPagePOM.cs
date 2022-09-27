@@ -21,6 +21,10 @@ namespace eCommerce.POMs
         IWebElement totalPrice => driver.FindElement(By.CssSelector("strong > .amount.woocommerce-Price-amount > bdi"));
         IWebElement couponDiscount => driver.FindElement(By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount"));
         IWebElement removeItem => driver.FindElement(By.CssSelector("tr:nth-of-type(1) > .product-remove > .remove"));
+        IWebElement checkoutLink => driver.FindElement(By.LinkText("Proceed to checkout"));
+
+
+   
         public void AddCoupon(string coupon)
         {
             couponCode.SendKeys(coupon);
@@ -64,8 +68,11 @@ namespace eCommerce.POMs
                     inCart = false;
                 }
             }
+        }
 
-
+        public void GoCheckout()
+        {
+            checkoutLink.Click();
         }
     }
 }
