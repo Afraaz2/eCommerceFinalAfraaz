@@ -37,11 +37,11 @@ namespace eCommerce.StepDefinitions
             LoginPagePOM login = new LoginPagePOM(_driver);
             try
             {
-                /*login.setUsername("afraaz.tiwana@nfocus.co.uk");
-                login.setPassword("nfocusTesting123");*/
+                login.setUsername("afraaz.tiwana@nfocus.co.uk");
+                login.setPassword("nfocusTesting123");
                 //Uses enviroment variables from secret.runsettigns to set username and password with try/catch
-                login.setUsername(Environment.GetEnvironmentVariable("username"));
-                login.setPassword(Environment.GetEnvironmentVariable("password"));
+                /*login.setUsername(Environment.GetEnvironmentVariable("username"));
+                login.setPassword(Environment.GetEnvironmentVariable("password"));*/
             }
 
             catch (NullReferenceException)
