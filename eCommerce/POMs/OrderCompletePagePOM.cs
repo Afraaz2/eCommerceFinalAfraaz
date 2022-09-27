@@ -15,11 +15,11 @@ namespace eCommerce.POMs
             this.driver = driver;
         }
 
-        IWebElement orderNumber => driver.FindElement(By.XPath("/html//article[@id='post-6']//ul//strong[.='3207']"));
+        IWebElement orderNumber => driver.FindElement(By.CssSelector(".order_details.woocommerce-thankyou-order-details > .order"));
 
         public int returnOrderNumber()
         {
-            return Convert.ToInt32(orderNumber.Text);
+            return Convert.ToInt32(orderNumber.Text.Substring(13));
         }
     }
 }

@@ -37,7 +37,7 @@ namespace eCommerce.POMs
 
         public int GetOrderNumber()
         {
-            return Convert.ToInt32(orderNumber);
+            return Convert.ToInt32(orderNumber.Text.Substring(1));
         }
     }
 }

@@ -12,7 +12,7 @@ namespace eCommerce.StepDefinitions
 
         private readonly ScenarioContext _scenarioContext;
         private IWebDriver _driver;
-        private double orderNumber;
+        private int orderNumber;
 
         public CheckoutStepDefinitions(ScenarioContext scenarioContext)
         {
@@ -37,9 +37,8 @@ namespace eCommerce.StepDefinitions
             CheckoutPagePOM checkoutPage = new CheckoutPagePOM(_driver);
             OrderCompletePagePOM orderPage = new OrderCompletePagePOM(_driver);
             checkoutPage.placeOrder();
+            Thread.Sleep(1500);
             orderNumber = orderPage.returnOrderNumber();
-            Console.WriteLine("The order nubmer is " + orderNumber);
-
         }
 
         [Then(@"I can navigate to my orders and check the same order shows in the account")]
@@ -50,6 +49,7 @@ namespace eCommerce.StepDefinitions
             homePagePOM.goLoginPage();
             accountPagePOM.GoOrders();
             int savedOrderNumber = accountPagePOM.GetOrderNumber();
+            Console.WriteLine("The order nubmer is " + savedOrderNumber);
 
             Assert.That(orderNumber == savedOrderNumber, "The order numbers do no match up");
         }

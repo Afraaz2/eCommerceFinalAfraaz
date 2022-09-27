@@ -34,7 +34,6 @@ namespace eCommerce.StepDefinitions
             shopPOM.AddToCart();
             shopPOM.ViewCart();
 
-
         }
 
         [When(@"I add an item to the cart and apply an coupon")]
