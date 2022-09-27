@@ -1,13 +1,20 @@
 ﻿using System;
-using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using NUnit.Framework;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using eCommerce.POMs;
+using TechTalk.SpecFlow;
 
-[assembly: Parallelizable(ParallelScope.Fixtures)] //Can only parallelise Features
-[assembly: LevelOfParallelism(20)] //Worker thread i.e. max amount of Features to run in Parallel
+//[assembly: Parallelizable(ParallelScope.Fixtures)] //Can only parallelise Features
+//[assembly: LevelOfParallelism(20)] //Worker thread i.e. max amount of Features to run in Parallel
 
 
 namespace eCommerce.StepDefinitions
@@ -28,8 +35,29 @@ namespace eCommerce.StepDefinitions
         [Before]
         public void SetUp()
         {
-            driver = new ChromeDriver();
-            _scenarioContext["mydriver"] = driver;
+            string browser = Environment.GetEnvironmentVariable("BROWSER");
+
+            switch (browser)
+            {
+                case "firefox":
+                    driver = new FirefoxDriver();
+                    _scenarioContext["mydriver"] = driver;
+                    break;
+                case "chrome":
+                    driver = new ChromeDriver();
+                    _scenarioContext["mydriver"] = driver;
+                    break;
+                case "edge":
+                    driver = new EdgeDriver();
+                    _scenarioContext["mydriver"] = driver;
+                    break;
+                default:
+                    Console.WriteLine("No browser or unknown browser");
+                    Console.WriteLine("Using chrome as default");
+                    driver = new ChromeDriver();
+                    _scenarioContext["mydriver"] = driver;
+                    break;
+            }
         }
 
         [After]
