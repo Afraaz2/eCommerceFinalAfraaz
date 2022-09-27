@@ -14,7 +14,7 @@ namespace eCommerce.POMs
         {
             this.driver = driver;
         }
-
+           
         IWebElement couponCode => driver.FindElement(By.Id("coupon_code"));
         IWebElement applyCoupon => driver.FindElement(By.Name("apply_coupon"));
         IWebElement currentPrice => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount > bdi"));

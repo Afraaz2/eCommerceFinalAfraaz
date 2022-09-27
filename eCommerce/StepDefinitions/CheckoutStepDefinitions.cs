@@ -16,6 +16,7 @@ namespace eCommerce.StepDefinitions
 
         public CheckoutStepDefinitions(ScenarioContext scenarioContext)
         {
+            //Fetches current instance of driver
             _scenarioContext = scenarioContext;
             this._driver = (IWebDriver)scenarioContext["mydriver"];
 
@@ -25,6 +26,7 @@ namespace eCommerce.StepDefinitions
         [Then(@"I can proceed to check out and fill out all key information")]
         public void CheckOut()
         {
+            //Fills out cart page and checks out
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             CheckoutPagePOM checkoutPage = new CheckoutPagePOM(_driver);
             cartPagePOM.GoCheckout();
@@ -34,6 +36,7 @@ namespace eCommerce.StepDefinitions
         [Then(@"I can Complete order and fetch the order number")]
         public void CompleteOrder()
         {
+            //Completes order and saves order number to class wide scope variable
             CheckoutPagePOM checkoutPage = new CheckoutPagePOM(_driver);
             OrderCompletePagePOM orderPage = new OrderCompletePagePOM(_driver);
             checkoutPage.placeOrder();
@@ -44,6 +47,7 @@ namespace eCommerce.StepDefinitions
         [Then(@"I can navigate to my orders and check the same order shows in the account")]
         public void NavigateToOrder()
         {
+            //Gets order number from account page and uses it to compare to global order variable
             MyAccountPagePOM accountPagePOM = new MyAccountPagePOM(_driver);
             HomePagePOM homePagePOM = new HomePagePOM(_driver);
             homePagePOM.goLoginPage();

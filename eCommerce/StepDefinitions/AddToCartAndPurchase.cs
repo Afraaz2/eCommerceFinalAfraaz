@@ -15,39 +15,35 @@ namespace eCommerce.StepDefinitions
 
         public AddToCartAndPurchase(ScenarioContext scenarioContext)
         {
+            //Fetches current instance of driver
             _scenarioContext = scenarioContext;
             this._driver = (IWebDriver)scenarioContext["mydriver"];
-            WebDriverWait myWait = new WebDriverWait(this._driver, TimeSpan.FromSeconds(2));
 
-        }
-
-        [Given(@"I am on the shop page")]
-        public void GivenIAmOnTheShopPage()
-        {
-            throw new PendingStepException();
         }
 
         [Then(@"I can add an item to my cart and view the cart")]
-        public void ThenICanAddAnItemToMyCartAndViewTheCart()
+        public void CartManagement()
         {
+            //Adds to cart and views item
             ShopPagePOM shopPOM = new ShopPagePOM(_driver);
             shopPOM.AddToCart();
             shopPOM.ViewCart();
 
         }
 
-        [When(@"I add an item to the cart and apply an coupon")]
-        public void ThenItemIsInCartAndICanApplyACoupon()
+        [When(@"I add an item to the cart and apply coupon (.*)")]
+        public void ApplyCoupon(string coupon)
         {
+            //Applys coupon edgewords
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
-            cartPagePOM.AddCoupon("edgewords");
+            cartPagePOM.AddCoupon(coupon);
             cartPagePOM.ApplyCoupon();
             Thread.Sleep(1000);
                         
         }
 
         [Then(@"The coupon gives a discount on the retail value")]
-        public void ThenTheCouponGivesADiscountEquivalentToOfTheRetailValue()
+        public void CouponDiscountVerification()
         {
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             double subTotal = cartPagePOM.GetCurrentPrice();

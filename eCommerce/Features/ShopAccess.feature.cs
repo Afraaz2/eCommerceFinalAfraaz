@@ -114,7 +114,7 @@ this.FeatureBackground();
  testRunner.Then("I can add an item to my cart and view the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
 #line 12
- testRunner.When("I add an item to the cart and apply an coupon", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("I add an item to the cart and apply coupon edgewords", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
  testRunner.Then("The coupon gives a discount on the retail value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -132,7 +132,7 @@ this.FeatureBackground();
                     "TestCase2"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Purchase an item of clothing and go through. Check my order detail", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 18
+#line 19
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -145,19 +145,19 @@ this.ScenarioInitialize(scenarioInfo);
 #line 4
 this.FeatureBackground();
 #line hidden
-#line 19
+#line 20
  testRunner.Given("I am currently on the shop page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 20
+#line 21
  testRunner.Then("I can add an item to my cart and view the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 21
+#line 22
  testRunner.Then("I can proceed to check out and fill out all key information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 22
+#line 23
  testRunner.Then("I can Complete order and fetch the order number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 23
+#line 24
  testRunner.Then("I can navigate to my orders and check the same order shows in the account", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

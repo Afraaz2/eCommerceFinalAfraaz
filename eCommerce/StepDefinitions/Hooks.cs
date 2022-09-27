@@ -37,6 +37,7 @@ namespace eCommerce.StepDefinitions
         {
             string browser = Environment.GetEnvironmentVariable("BROWSER");
 
+            // Uses enviroment variables to determine what browser to use
             switch (browser)
             {
                 case "firefox":
@@ -52,6 +53,7 @@ namespace eCommerce.StepDefinitions
                     _scenarioContext["mydriver"] = driver;
                     break;
                 default:
+                    //If no driver provided, chrome is used as a default
                     Console.WriteLine("No browser or unknown browser");
                     Console.WriteLine("Using chrome as default");
                     driver = new ChromeDriver();
@@ -63,7 +65,7 @@ namespace eCommerce.StepDefinitions
         [After]
         public void TearDown()
         {
-            Thread.Sleep(2000);
+            //Removes all items from cart and logs out after closing driver
             HomePagePOM homePage = new HomePagePOM(driver);
             CartPagePOM cartPagePOM = new CartPagePOM(driver);
             MyAccountPagePOM myAccountPagePOM = new MyAccountPagePOM(driver);
