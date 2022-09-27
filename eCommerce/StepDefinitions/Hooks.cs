@@ -35,7 +35,7 @@ namespace eCommerce.StepDefinitions
         [After]
         public void TearDown()
         {
-            Thread.Sleep(5000);
+            Thread.Sleep(2000);
             HomePagePOM homePage = new HomePagePOM(driver);
             CartPagePOM cartPagePOM = new CartPagePOM(driver);
             MyAccountPagePOM myAccountPagePOM = new MyAccountPagePOM(driver);

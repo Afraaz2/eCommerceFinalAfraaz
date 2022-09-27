@@ -42,20 +42,21 @@ namespace eCommerce.StepDefinitions
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             cartPagePOM.AddCoupon("edgewords");
             cartPagePOM.ApplyCoupon();
+            Thread.Sleep(1000);
                         
         }
 
         [Then(@"The coupon gives a discount on the retail value")]
         public void ThenTheCouponGivesADiscountEquivalentToOfTheRetailValue()
         {
-           CartPagePOM cartPagePOM = new CartPagePOM(_driver);
+            CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             double subTotal = cartPagePOM.GetCurrentPrice();
             double coupon = cartPagePOM.GetCouponDiscount();
             double afterCoupon = subTotal - coupon;
             double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
-            Math.Round(percentage, MidpointRounding.AwayFromZero);
-            Console.WriteLine("the coupon value is " + coupon + " the percentage return is " + percentage);
-            Assert.That(percentage == 15, "Coupon does not apply 15% discount");
+            int intPercentage = Convert.ToInt32(percentage);
+            Console.WriteLine("the coupon value is " + coupon + " the percentage return is " + intPercentage);
+            Assert.That(intPercentage == 15, "Coupon does not apply 15% discount");
         }
 
 

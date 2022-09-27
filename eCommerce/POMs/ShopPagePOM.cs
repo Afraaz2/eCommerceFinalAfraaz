@@ -27,8 +27,7 @@ namespace eCommerce.POMs
 
         public void ViewCart()
         {
-            var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
-            wait.Until(drv => cartLink.Displayed);
+            Thread.Sleep(1000);
             cartLink.Click();
         }
     }
