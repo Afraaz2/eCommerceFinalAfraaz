@@ -37,13 +37,12 @@ namespace eCommerce.StepDefinitions
         [When(@"I add an item to the cart and apply coupon (.*)")]
         public void ApplyCoupon(string coupon)
         {
-            //Applys coupon edgewords
+            //Applys coupon declared in the gherkin file
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             cartPagePOM.AddCoupon(coupon);
             TakeScreenShot(_driver, "Coupon applied");
             Console.WriteLine("Coupon applied");
             Thread.Sleep(1000);
-                        
         }
 
         [Then(@"The coupon gives a discount of (.*)% on the retail value")]
@@ -52,8 +51,7 @@ namespace eCommerce.StepDefinitions
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             double subTotal = cartPagePOM.GetCurrentPrice();
             double coupon = cartPagePOM.GetCouponDiscount();
-            double afterCoupon = subTotal - coupon;
-            double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
+            double percentage = ((subTotal - (subTotal - coupon)) / subTotal) * 100;
             int intPercentage = Convert.ToInt32(percentage);
             Console.WriteLine($"The coupon applies a {intPercentage}% discount, the target percentage is {targetPercentage}%");
             Assert.That(intPercentage == targetPercentage, ($"Coupon does not apply {targetPercentage}% discount"));

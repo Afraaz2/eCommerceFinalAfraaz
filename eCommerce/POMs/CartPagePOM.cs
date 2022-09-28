@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static eCommerce.Support.SupporterStaticMethods;
 
 namespace eCommerce.POMs
 {
@@ -17,20 +18,24 @@ namespace eCommerce.POMs
         //Variables instantiate once called 
         IWebElement couponCode => driver.FindElement(By.Id("coupon_code"));
         IWebElement applyCoupon => driver.FindElement(By.Name("apply_coupon"));
+
         IWebElement currentPrice => driver.FindElement(By.CssSelector(".cart-subtotal > td > .amount.woocommerce-Price-amount > bdi"));
+        By currentPriceLocator => By.CssSelector(".cart-subtotal > td");
+
         IWebElement totalPrice => driver.FindElement(By.CssSelector("strong > .amount.woocommerce-Price-amount > bdi"));
         IWebElement couponDiscount => driver.FindElement(By.CssSelector(".cart-discount.coupon-edgewords > td > .amount.woocommerce-Price-amount"));
         IWebElement removeItem => driver.FindElement(By.CssSelector("tr:nth-of-type(1) > .product-remove > .remove"));
         IWebElement checkoutLink => driver.FindElement(By.LinkText("Proceed to checkout"));
 
 
-   
+
+
         public void AddCoupon(string coupon)
         {
             //Adds and applies coupon 
             couponCode.SendKeys(coupon);
             applyCoupon.Click();
-
+            WaitForElmStatic(driver, 2, currentPriceLocator);
         }
 
 
