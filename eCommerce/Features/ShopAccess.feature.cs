@@ -117,7 +117,7 @@ this.FeatureBackground();
  testRunner.When("I add an item to the cart and apply coupon edgewords", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
- testRunner.Then("The coupon gives a discount of 10% on the retail value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("The coupon gives a discount of 15% on the retail value", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

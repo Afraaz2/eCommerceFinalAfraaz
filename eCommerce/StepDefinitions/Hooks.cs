@@ -74,6 +74,7 @@ namespace eCommerce.StepDefinitions
             homePage.goLoginPage();
             myAccountPagePOM.Logout();
             driver.Quit();
+            //test
         }
     }
 }
