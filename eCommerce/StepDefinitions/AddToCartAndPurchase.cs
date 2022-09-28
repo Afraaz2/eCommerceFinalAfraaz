@@ -4,6 +4,8 @@ using eCommerce.POMs;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
+using static eCommerce.Support.SupporterMethods;
+
 
 namespace eCommerce.StepDefinitions
 {
@@ -28,7 +30,8 @@ namespace eCommerce.StepDefinitions
             ShopPagePOM shopPOM = new ShopPagePOM(_driver);
             shopPOM.AddToCart();
             shopPOM.ViewCart();
-
+            Console.WriteLine("Item added to cart");
+            TakeScreenShot(_driver, "Item in cart");
         }
 
         [When(@"I add an item to the cart and apply coupon (.*)")]
@@ -37,6 +40,8 @@ namespace eCommerce.StepDefinitions
             //Applys coupon edgewords
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             cartPagePOM.AddCoupon(coupon);
+            TakeScreenShot(_driver, "Coupon applied");
+            Console.WriteLine("Coupon applied");
             Thread.Sleep(1000);
                         
         }
@@ -50,6 +55,7 @@ namespace eCommerce.StepDefinitions
             double afterCoupon = subTotal - coupon;
             double percentage = ((subTotal - afterCoupon) / subTotal) * 100;
             int intPercentage = Convert.ToInt32(percentage);
+            Console.WriteLine($"The coupon applies a {intPercentage}% discount, the target percentage is {targetPercentage}%");
             Assert.That(intPercentage == targetPercentage, ($"Coupon does not apply {targetPercentage}% discount"));
         }
 

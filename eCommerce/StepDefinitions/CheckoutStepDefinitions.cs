@@ -4,6 +4,7 @@ using eCommerce.POMs;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
+using static eCommerce.Support.SupporterMethods;
 
 namespace eCommerce.StepDefinitions
 {
@@ -31,6 +32,8 @@ namespace eCommerce.StepDefinitions
             CheckoutPagePOM checkoutPage = new CheckoutPagePOM(_driver);
             cartPagePOM.GoCheckout();
             checkoutPage.fillBillingDetails();
+            TakeScreenShot(_driver, "Billing details filled");
+            Console.WriteLine("Billing details filled");
         }
 
         [Then(@"I can Complete order and fetch the order number")]
@@ -42,6 +45,8 @@ namespace eCommerce.StepDefinitions
             checkoutPage.placeOrder();
             Thread.Sleep(1500);
             orderNumber = orderPage.returnOrderNumber();
+            TakeScreenShot(_driver, "Order placed");
+            Console.WriteLine("Order placed");
         }
 
         [Then(@"I can navigate to my orders and check the same order shows in the account")]
@@ -54,7 +59,7 @@ namespace eCommerce.StepDefinitions
             accountPagePOM.GoOrders();
             int savedOrderNumber = accountPagePOM.GetOrderNumber();
             Console.WriteLine("The order nubmer is " + savedOrderNumber);
-
+            TakeScreenShot(_driver, "Order number in account information");
             Assert.That(orderNumber == savedOrderNumber, "The order numbers do no match up");
         }
     }
