@@ -4,7 +4,7 @@ using eCommerce.POMs;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
-using static eCommerce.Support.SupporterMethods;
+using static eCommerce.Support.SupporterStaticMethods;
 
 
 namespace eCommerce.StepDefinitions

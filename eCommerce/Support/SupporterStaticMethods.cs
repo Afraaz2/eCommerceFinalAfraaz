@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace eCommerce.Support
 {
-    internal static class SupporterMethods
+    internal static class SupporterStaticMethods
     {
         public static void TakeScreenShot(IWebDriver driver, string FileName)
         {
