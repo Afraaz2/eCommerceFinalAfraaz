@@ -26,7 +26,7 @@ namespace eCommerce.POMs
         IWebElement checkPaymentsButton => driver.FindElement(By.CssSelector(".payment_method_cheque.wc_payment_method > label"));
         IWebElement placeOrderButton => driver.FindElement(By.CssSelector("button#place_order"));
 
-        public void fillBillingDetails()
+        public void fillBillingDetails(string firstName, string lastName, string phone, string postcode, string city, string address, string email)
         {
             //Clears every field and then sends data in for check outs
             firstNameField.Clear();
@@ -37,14 +37,15 @@ namespace eCommerce.POMs
             phoneField.Clear();
             emailField.Clear();
 
-            firstNameField.SendKeys("Afraaz");
-            lastNameField.SendKeys("T");
-            addressField.SendKeys("37 Springbank Road");
-            cityField.SendKeys("Newcastle");
-            phoneField.SendKeys("054061355050");
-            postcodeField.SendKeys("NE2 1PD");
-            emailField.SendKeys("afraaz.tiwana@nfocus.co.uk");
+            firstNameField.SendKeys(firstName);
+            lastNameField.SendKeys(lastName);
+            addressField.SendKeys(address);
+            cityField.SendKeys(city);
+            phoneField.SendKeys(phone);
+            postcodeField.SendKeys(postcode);
+            emailField.SendKeys(email);
             checkPaymentsButton.Click();
+            Thread.Sleep(5000);
         }
        
         public void placeOrder()

@@ -24,14 +24,14 @@ namespace eCommerce.StepDefinitions
         }
 
 
-        [When(@"I proceed to check out and fill out all key information")]
-        public void CheckOut()
+        [When(@"I proceed to check out and fill out all key information, using (.*), (.*), (.*), (.*), (.*), (.*), (.*)")]
+        public void CheckOut(string firstName, string lastName, string phone, string postcode, string city, string address, string email)
         {
             //Fills out cart page and checks out
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
             CheckoutPagePOM checkoutPage = new CheckoutPagePOM(_driver);
             cartPagePOM.GoCheckout();
-            checkoutPage.fillBillingDetails();
+            checkoutPage.fillBillingDetails(firstName,lastName,phone,postcode, city,address,email);
             TakeScreenShot(_driver, "Billing details filled");
             Console.WriteLine("Billing details filled");
         }

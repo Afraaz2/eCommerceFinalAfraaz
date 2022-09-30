@@ -126,11 +126,24 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Purchase an item of clothing and go through. Check my order detail")]
         [NUnit.Framework.CategoryAttribute("TestCase2")]
-        public void PurchaseAnItemOfClothingAndGoThrough_CheckMyOrderDetail()
+        [NUnit.Framework.TestCaseAttribute("Afraaz", "T", "054061355050", "NE2 1PD", "Newcastle", "37 Springbank Roadd", "afraaz.tiwana@nfocus.co.uk", null)]
+        public void PurchaseAnItemOfClothingAndGoThrough_CheckMyOrderDetail(string firstName, string lastName, string phone, string postcode, string city, string address, string email, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "TestCase2"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("phone", phone);
+            argumentsOfScenario.Add("postcode", postcode);
+            argumentsOfScenario.Add("city", city);
+            argumentsOfScenario.Add("address", address);
+            argumentsOfScenario.Add("email", email);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Purchase an item of clothing and go through. Check my order detail", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 17
 this.ScenarioInitialize(scenarioInfo);
@@ -149,7 +162,8 @@ this.FeatureBackground();
  testRunner.When("I add an item to my cart and view the cart", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 19
- testRunner.When("I proceed to check out and fill out all key information", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I proceed to check out and fill out all key information, using {0}, {1}, {2}, {3}" +
+                            ", {4}, {5}, {6}", firstName, lastName, phone, postcode, city, address, email), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 20
  testRunner.When("I complete order and fetch the order number", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
