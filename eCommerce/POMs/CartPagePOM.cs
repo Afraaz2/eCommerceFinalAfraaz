@@ -40,19 +40,19 @@ namespace eCommerce.POMs
 
 
         //Returns values for current price,total price and coupon discount
-        public double GetCurrentPrice()
+        public decimal GetCurrentPrice()
         {
-            return  Convert.ToDouble(currentPrice.Text.Substring(1));
+            return  Convert.ToDecimal(currentPrice.Text.Substring(1));
         }
 
-        public double GetTotalPrice()
+        public decimal GetTotalPrice()
         {
-            return Convert.ToDouble(totalPrice.Text.Substring(1));
+            return Convert.ToDecimal(totalPrice.Text.Substring(1));
         }
 
-        public double GetCouponDiscount()
+        public decimal GetCouponDiscount()
         {
-            return Convert.ToDouble(couponDiscount.Text.Substring(1));
+            return Convert.ToDecimal(couponDiscount.Text.Substring(1));
         }
 
 

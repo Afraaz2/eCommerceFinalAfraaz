@@ -24,7 +24,7 @@ namespace eCommerce.StepDefinitions
         }
 
 
-        [Then(@"I can proceed to check out and fill out all key information")]
+        [When(@"I proceed to check out and fill out all key information")]
         public void CheckOut()
         {
             //Fills out cart page and checks out
@@ -36,7 +36,7 @@ namespace eCommerce.StepDefinitions
             Console.WriteLine("Billing details filled");
         }
 
-        [Then(@"I can Complete order and fetch the order number")]
+        [When(@"I complete order and fetch the order number")]
         public void CompleteOrder()
         {
             //Completes order and saves order number to class wide scope variable

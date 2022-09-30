@@ -23,7 +23,7 @@ namespace eCommerce.StepDefinitions
 
         }
 
-        [Then(@"I can add an item to my cart and view the cart")]
+        [When(@"I add an item to my cart and view the cart")]
         public void CartManagement()
         {
             //Adds to cart and views item
@@ -49,12 +49,12 @@ namespace eCommerce.StepDefinitions
         public void CouponDiscountVerification(int targetPercentage)
         {
             CartPagePOM cartPagePOM = new CartPagePOM(_driver);
-            double subTotal = cartPagePOM.GetCurrentPrice();
-            double coupon = cartPagePOM.GetCouponDiscount();
-            double percentage = ((subTotal - (subTotal - coupon)) / subTotal) * 100;
-            int intPercentage = Convert.ToInt32(percentage);
-            Console.WriteLine($"The coupon applies a {intPercentage}% discount, the target percentage is {targetPercentage}%");
-            Assert.That(intPercentage == targetPercentage, ($"Coupon does not apply {targetPercentage}% discount"));
+            decimal subTotal = cartPagePOM.GetCurrentPrice();
+            decimal coupon = cartPagePOM.GetCouponDiscount();
+            decimal percentage = ((subTotal - (subTotal - coupon)) / subTotal) * 100;
+            Math.Round(percentage, 2);
+            Console.WriteLine($"The coupon applies a {percentage}% discount, the target percentage is {targetPercentage}%");
+            Assert.That(percentage == targetPercentage, ($"Coupon does not apply {targetPercentage}% discount"));
         }
 
 

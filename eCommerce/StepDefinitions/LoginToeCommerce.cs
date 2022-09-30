@@ -21,7 +21,6 @@ namespace eCommerce.StepDefinitions
         }
 
         [Given(@"I am on the website homepage")]
-        [Given(@"I am on the website homepage and click the My Account button")]
         public void LoginPageNavigation()
         {
             _driver.Url = "https://www.edgewordstraining.co.uk/demo-site/";
@@ -30,8 +29,7 @@ namespace eCommerce.StepDefinitions
             //Moves to login page 
         }
 
-        [Then(@"I login as a valid user account")]
-        [Then(@"I can proceed to login page and login using valid details")]
+        [When(@"I login as a valid user account")]
         public void Login()
         {
             LoginPagePOM login = new LoginPagePOM(_driver);
@@ -51,8 +49,7 @@ namespace eCommerce.StepDefinitions
             login.goSubmit();
         }
 
-        [Given(@"I am currently on the shop page")]
-        [When(@"I have arrived on the My account page I can access the shop page")]
+        [When(@"I am on the shop page")]
         public void AccessShopPage()
         {
             //Goes to shop page
