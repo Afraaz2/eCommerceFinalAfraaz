@@ -126,7 +126,7 @@ this.FeatureBackground();
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Purchase an item of clothing and go through. Check my order detail")]
         [NUnit.Framework.CategoryAttribute("TestCase2")]
-        [NUnit.Framework.TestCaseAttribute("Afraaz", "T", "054061355050", "NE2 1PD", "Newcastle", "37 Springbank Roadd", "afraaz.tiwana@nfocus.co.uk", null)]
+        [NUnit.Framework.TestCaseAttribute("Afraaz", "T", "054061355050", "NE2 1PD", "Newcastle", "37 Springbank Roadd", "afraaz@nfocus.co.uk", null)]
         public void PurchaseAnItemOfClothingAndGoThrough_CheckMyOrderDetail(string firstName, string lastName, string phone, string postcode, string city, string address, string email, string[] exampleTags)
         {
             string[] @__tags = new string[] {
