@@ -22,7 +22,7 @@ namespace eCommerce.POMs
 
         public LoginPagePOM setUsername(string username)
         {
-            //Sets username
+            //Sets username, here
             usernameField.SendKeys(username);
             return this;
         }
